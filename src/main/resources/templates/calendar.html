@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Календарь | СПО Будущее</title>
+	    <link rel="stylesheet" href="/calendar/css/style.css">
+	    <link rel="stylesheet" href="/calendar/css/events.css">
+	    <link rel="stylesheet" href="/calendar/css/legend.css">
+	    <link rel="stylesheet" href="/calendar/css/popup.css">
+	    <link rel="icon" href="/base/logo.png">
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<br>
+		<div id="date-pick-div">
+			<table style="width: 100%;">
+				<tr style="width: 1000%;">
+					<td style="width: 60%; vertical-align: middle; padding-left: calc(285% / 7);">
+					    <button id="prev-month">&lt;</button>
+					    <span style="font-weight: 500; font-size: 14pt;" id="date-name"></span>
+					    <button id="next-month">&gt;</button>
+					</td>
+					<!-- <td style="width: 58.5%; vertical-align: middle; padding-left: calc(300% / 7);">
+						<button id="prev-month">&lt;</button>
+						<span id="date-name"></span>
+						<button id="next-month">&gt;</button>
+					</td> -->
+					<td>
+						<button onclick="showCreateEventPopup()" id="create-button">
+							<span>Создать мероприятие</span>
+						</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<br>
+		<div>
+			<table id="calendar-table">
+				<thead>
+					<tr>
+						<td class="calendar-cell">ПН</td>
+						<td class="calendar-cell">ВТ</td>
+						<td class="calendar-cell">СР</td>
+						<td class="calendar-cell">ЧТ</td>
+						<td class="calendar-cell">ПТ</td>
+						<td class="calendar-cell">СБ</td>
+						<td class="calendar-cell">ВС</td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+		<div class="legend">
+			<ul class="legend-list">
+		        <li onclick="redisplayLegend(event)" th:each="event_type: ${event_types}" th:attr="event-type=${event_type.name().toLowerCase()}" th:class="'legend-event-' + ${event_type.name().toLowerCase()}" th:text="${utils.translateEventType(event_type)}"></li>
+			</ul>
+		</div>
+		<div style="display: none;" class="popup-container" id="create-event-block-box">
+			<div class="popup" id="create-event-block">
+				<header class="popup-header">
+			        <span id="create-event-header-text">Создать Мероприятие</span>
+			        <div onclick="hideCreateEventPopup()" class="close-block">
+			            <div>x</div>
+			        </div>
+			    </header>
+			    <div id="input-block">
+				    <label for="event-name">Название мероприятия</label>
+				    <input class="event-input-field" id="event-name" type="text" autocomplete="off" maxlength="100">
+				    <!-- <label for="event-type">Тип мероприятия</label>
+				    <input id="event-type" type="text"> -->
+				    <label for="event-type">Тип мероприятия</label>
+				    <select id="event-type">
+				    	<option th:each="event_type: ${event_types}" 
+		    					th:value="${event_type}" 
+		    					th:text="${utils.translateEventType(event_type)}"></option>
+				    </select>
+				    <table id="date-time-input-table">
+						<tr>
+							<td>
+								<label for="event-date">Дата</label>
+							</td>
+							<td class="blank-input-cell"></td>
+							<td>
+								<label for="event-time">Время</label>
+							</td>
+						</tr>
+						<tr>
+							<td id="input-cell-date" class="input-cell">
+							    <input class="event-input-field" id="event-date" type="text" maxlength="10" placeholder=" _ _._ _._ _ _ _" autocomplete="off">
+							</td>
+							<td class="blank-input-cell"></td>
+							<td id="input-cell-time" class="input-cell">
+							    <input class="event-input-field" id="event-time" type="text" maxlength="5" placeholder=" _ _:_ _" autocomplete="off">
+							</td>
+						</tr>			    
+				    </table>
+				    <label for="event-description">Описание</label>
+		    		<textarea class="event-input-field" id="event-description" maxlength="500"></textarea>
+				 </div>
+				 <button id="finish-button" onclick="submitEvent(event)" enabled="false">Готово</button>
+			</div>
+		</div>
+		<div style="display: none;" class="popup-container" id="event-info-block-box">
+			<div class="popup" id="event-info-block">
+				<header class="popup-header color-background-change" id="info-header">
+			        <span id="info-event-name"></span>
+			        <div onclick="hideEventInfoPopup()" class="close-block">
+			            <div class="color-change">x</div>
+			        </div>
+			    </header>
+			    <div id="event-date-time-info-block" class="event-info-text-block event-date-time-block" style="display: inline;">
+			    	<span id="info-event-date"></span>
+			    	<span id="info-event-time"></span>
+			    </div>
+			    <div id="event-description-info-block" class="event-info-text-block event-description-block">
+			    	<span id="info-event-description"></span>
+			    </div>
+			    <button onclick="onInfoEventButtonClicked(event)" class="color-background-change" id="info-event-button"></button>
+			</div>
+		</div>
+		<div style="display: none;" class="popup-container" id="event-admin-info-block-box">
+			<div class="popup" id="event-admin-info-block">
+				<header class="popup-header color-background-change" id="admin-info-header">
+			        <span id="admin-info-event-name"></span>
+			        <div onclick="hideEventAdminInfoPopup()" class="close-block">
+			            <div class="color-change">x</div>
+			        </div>
+			    </header>
+			    <div id="event-date-time-admin-info-block" class="event-info-text-block event-date-time-block" style="display: inline;">
+			    	<span id="admin-info-event-date"></span>
+			    	<span id="admin-info-event-time"></span>
+			    </div>
+			    <div id="event-description-admin-info-block" class="event-info-text-block event-description-block">
+			    	<span id="admin-info-event-description"></span>
+			    </div>
+			    <div id="participants" class="event-info-text-block">
+				    <div onclick="showParticipantList()">
+				    	Участников: <span id="participants-count"></span>
+				    </div>
+				
+				    <div id="participants-list" style="text-align: center; display: none;">
+					    <nav>
+					        <ul class="color-border-change"></ul>
+					    </nav>
+					</div>
+				</div>
+			    <button class="color-background-change popup-button" onclick="onEditEventButtonClicked()" id="admin-info-event-edit-button">Редактировать</button>
+			    <button class="color-background-change popup-button" onclick="onRemoveEventButtonClicked()" id="admin-info-event-remove-button">Удалить</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="/utils.js"></script>
+		<script>
+			document.getElementById('header-calendar-button').classList.add('selected-section');
+			
+			//remove it later
+			
+			const comGroup = [
+				'COMMANDER',
+				'EXTERNAL_COMMISSAR',
+				'INTERIOR_COMMISSAR',
+				'METHODIST',
+				'COMMANDANT'
+			];
+			
+			const goodEventTypes = [
+				'COMISSARKA', 
+				'MEETING', 
+				'SCHOOL', 
+				'PREPARATION', 
+				'INTERSQUAD', 
+				'AGITATION', 
+				'VOLUNTEERING'
+			];
+			
+			const user = getUser();
+			
+			if (user.role === 'CANDIDATE') {
+				const createEventButton = document.getElementById('create-button');
+				
+				createEventButton.style.opacity = '0.5';
+				createEventButton.onclick = e => {};
+				createEventButton.style.cursor = 'auto';
+				
+				document.getElementById('event-type').innerText = '';
+			}
+			else if (!comGroup.includes(user.role)) {
+				Array.from(document.getElementById('event-type').children).forEach(option => {
+					if (!goodEventTypes.includes(option.value))
+						option.remove();
+				})
+			}
+		</script>
+		<script type="text/javascript" src="/calendar/js/script.js"></script>
+		<script type="text/javascript" src="/calendar/js/events.js"></script>
+	</body>
+</html>

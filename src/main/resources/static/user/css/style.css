@@ -1,0 +1,12 @@
+
+img.avatar-img {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
+
+table#event-list td {
+    border: 0.5px solid black;
+    text-align: center;
+	font-family: serif;
+}

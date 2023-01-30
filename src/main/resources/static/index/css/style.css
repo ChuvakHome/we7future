@@ -1,0 +1,49 @@
+
+body {
+    background-image: url('/index/background.jpg');
+    background-size: 100%;
+}
+
+table#post-list {
+	font-size: 1.15em;
+	border-spacing: 10px;
+}
+
+div.post {
+    border: solid;
+    border-color: #1DA1D9;
+    border-width: 3px;
+    border-radius: 10px;
+    background: white;
+    padding: 10px;
+}
+
+a.post-link {
+	text-decoration: none;	
+}
+
+header.post-header {
+	background-color: white;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+header.post-header img.group-avatar {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+
+div.post-text {
+	text-align: left;
+	padding: 10px;
+	margin: 5px 5px 5px 25px;
+}
+
+header.post-header * {
+	vertical-align: middle;
+}
+
+[vk-uri] {
+	cursor: pointer;
+}

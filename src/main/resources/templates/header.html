@@ -1,0 +1,34 @@
+<header>
+	<table>
+		<tr>
+			<td id="header-logo">
+				<img src="/header/logo.png" width="60px"/>
+			</td>
+	        <td style="min-width: 180px;" id="header-squad-name" onclick="location.assign('/')" class="header-name header-button">
+				<button onclick="location.assign('/')">СПО «Будущее»</button>
+			</td>
+			<!-- <td id="header-users-button" onclick="location.assign('/users')" class="header-button">
+				<button onclick="location.assign('/users')">Участники</button>
+			</td> -->
+			<!-- <td id="header-events-button" onclick="location.assign('/events')" class="header-button">
+				<button onclick="location.assign('/events')">Мероприятия</button>
+			</td> -->
+			<td id="header-calendar-button" onclick="location.assign('/calendar')" class="header-button">
+				<button onclick="location.assign('/calendar')">Календарь</button>
+			</td>
+			<!-- <td class="header-button">
+				<button onclick="location.assign('/locations')">Локации</button>
+			</td> -->
+			<td style="width: 100%;" id="blank-cell"></td>
+			<td id="profile-block" style="min-width: 260px;" onclick="goToProfile()" class="header-button">
+				<img id="profile-img" style="display: none" 
+					src="https://se.ifmo.ru/~s311683/db/course-project/missingno.png" 
+					width="50px" 
+					height="50px">
+				<span id="user-name" style="display: none"></span>
+			</td>
+		</tr>
+	</table>
+</header>
+<link rel="stylesheet" href="/header/css/style.css"></link>
+<script type="text/javascript" src="/header/js/script.js"></script>

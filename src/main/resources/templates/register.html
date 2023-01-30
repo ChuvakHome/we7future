@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>Регистрация | СПО Будущее</title>
+		<link rel="stylesheet" href="/register/css/style.css"></link>
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<br>
+		<form id="form">
+			<label for="surname-field">Фамилия: </label>
+			<input id="surname-field" name="surname" type="text" placeholder="Фамилия" required="required"/>
+			<br>
+			
+			<label for="name-field">Имя: </label>
+			<input id="name-field" name="name" type="text" placeholder="Имя" required="required"/>
+			<br>
+			
+			<label for="middle-name-field">Отчетство: </label>
+			<input id="middle-name-field" name="middle_name" type="text" placeholder="Отчество" required="required"/>
+			<br>
+			
+			<label for="vk-field">VK: </label>
+			<input id="vk-field" name="vk_id" type="text" placeholder="Ссылка на профиль ВК" required="required"/>
+			<br>
+			
+			<label for="phone-field">Номер телефона: </label>
+			<input id="phone-field" name="phone" type="text" placeholder="Телефон" required="required"/>
+			<br>
+			
+			<label for="email-field">Адрес электронной почты: </label>
+			<input id="email-field" name="email" type="text" placeholder="Почта" required="required"/>
+			<br>
+			
+			<input id="submit-btn" type="submit" value="Зарегистрироваться"/>
+		</form>
+		Уже есть учетная запись? <button class="login-button" onclick="onLoginButton()">Войти</button>
+		<script type="text/javascript" src="register/js/script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,62 @@
+
+div.left-event-div ul {
+	list-style-type: none;
+	text-align: left;
+}
+
+li.event {
+	cursor: pointer;
+	display: inline-flex;
+	margin-top: 10px;
+}
+
+li.event::before {
+	font-size: 1.5em;
+	margin-left: -20px;
+	margin-right: 5px;
+	margin-top: -8px
+}
+
+li.event[will-visit="true"]::before {
+	content: '\25cf\20';
+}
+
+li.event[will-visit="false"]::before {
+	content: '\25cb\20';
+}
+
+li.event-spbso::before {
+	color: #0033B7;
+}
+
+li.event-shso::before {
+	color: #00B3FF;
+}
+
+li.event-comissarka::before {
+	color: red;
+}
+
+li.event-meeting::before {
+	color: #FEEF30;
+}
+
+li.event-school::before {
+	color: #17A64A;
+}
+
+li.event-preparation::before {
+	color: #B0B0B0;
+}
+
+li.event-intersquad::marker {
+	color: #FF9C7D;
+}
+
+li.event-agitation::before {
+	color: #8A00CB;
+}
+	
+li.event-volunteering::before {
+	color: #FE9DE9;
+}

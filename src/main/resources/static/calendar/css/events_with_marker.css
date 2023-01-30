@@ -1,0 +1,52 @@
+
+li.event {
+	cursor: pointer;
+}
+
+li.event::marker {
+	font-size: 1.5em;
+}
+
+li.event[will-visit="true"]::marker {
+	content: '\25cf\20';
+}
+
+li.event[will-visit="false"]::marker {
+	content: '\25cb\20';
+}
+
+li.event-spbso::marker {
+	color: #0033B7;
+}
+
+li.event-shso::marker {
+	color: #00B3FF;
+}
+
+li.event-comissarka::marker {
+	color: red;
+}
+
+li.event-meeting::marker {
+	color: #FEEF30;
+}
+
+li.event-school::marker {
+	color: #17A64A;
+}
+
+li.event-preparation::marker {
+	color: #B0B0B0;
+}
+
+li.event-intersquad::marker {
+	color: #FF9C7D;
+}
+
+li.event-agitation::marker {
+	color: #8A00CB;
+}
+	
+li.event-volunteering::marker {
+	color: #FE9DE9;
+}

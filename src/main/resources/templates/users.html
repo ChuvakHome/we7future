@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" href="/users/css/style.css">
+		<title>Участники | СПО Будущее</title>
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<br>
+		<div>
+			<table id="user-list">
+				<thead>
+					<tr>
+						<td>Пользователь</td>
+						<td>VK</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="user: ${users_list}">
+						<td>
+							<a th:href="'/user/' + ${user.vkId}" th:text="${user.surname} + ' ' + ${user.name} + ' ' + ${user.middleName}"></a>
+						</td>
+						<td><a th:href="${vk_utils.getVKURI(user.vkId)}" 
+							   th:text="${vk_utils.getVKURI(user.vkId)}"></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<script>
+			document.getElementById('header-users-button').classList.add('selected-section');
+		</script>
+	</body>
+</html>

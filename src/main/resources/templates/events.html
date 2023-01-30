@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Мероприятия | СПО Будущее</title>
+	    <link rel="stylesheet" href="/events/css/style.css"></link>
+	    <link rel="icon" href="/base/logo.png"/>
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<form id="form">
+		    <label for="event-name">Название мероприятия: </label>
+		    <br>
+		    <input placeholder="Название мероприятия" id="event-name" type="text" required="required"/>
+		    <br>
+		    
+		    <label for="event-type">Тип мероприятия: </label>
+		    <br>
+		    <select id="event-type">
+		    	<option th:each="event_type: ${event_types}" 
+		    			th:value="${event_type}" 
+		    			th:text="${utils.translateEventType(event_type)}"></option>
+		    </select>
+		    <br>
+		    
+		    <label for="event-date">Дата и время: </label>
+		    <br>
+		    <input id="event-date" type="datetime-local" required="required"/>
+		    <br>
+		    
+		    <label for="event-description">Описание мероприятия:</label>
+		    <br>
+		    <textarea id="event-description" placeholder="Описание мероприятия"></textarea>
+		    <br>
+		    
+		    <input id="submit-btn" type="submit" value="Создать мероприятие"/>
+		</form>
+		<h1>Список мероприятий:</h1>
+		<table id="event-list">
+				<thead>
+					<tr>
+						<td>Название</td>
+						<td>Дата</td>
+						<td>Тип</td>
+						<td>Описание</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="event: ${events}">
+						<td th:text="${event.name}"></td>
+						<td th:text="${event.dateTime}"></td>
+						<td th:text="${utils.translateEventType(event.eventType)}"></td>
+						<td th:text="${event.description}"></td>
+					</tr>
+				</tbody>
+		</table>
+		<script>
+			document.getElementById('header-events-button').classList.add('selected-section');
+		</script>
+		<script type="text/javascript" src="/events/js/script.js"></script>
+	</body>
+</html>

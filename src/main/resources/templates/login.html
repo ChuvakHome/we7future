@@ -1,0 +1,19 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>Авторизация | СПО Будущее</title>
+		<link rel="stylesheet" href="/login/css/style.css"></link>
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<br>
+		<form id="form">
+			<label>VK: </label>
+			<input id="vk-field" name="vk" type="text" placeholder="VK"/>
+			
+			<input id="submit-btn" type="submit" value="Авторизироваться"/>
+		</form>
+		Нет учетной записи? <button class="register-button" onclick="onRegisterButton()">Зарегистрироваться</button>
+		<script type="text/javascript" src="login/js/script.js"></script>
+	</body>
+</html>

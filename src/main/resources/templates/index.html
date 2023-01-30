@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>СПО Будущее</title>
+    <link rel="stylesheet" href="/index/css/style.css"></link>
+    <link rel="icon" href="/index/logo.png"/>
+</head>
+<body>
+    <div th:insert="~{header.html}"></div>
+    
+    <table id="post-list">
+	    <th:block th:each="post: ${posts}">
+	    	<tr>
+	    		<td>
+		    		<div class="post">
+		    			<header class="post-header">
+		    				<img onclick="goToPost(event)" th:attr="vk-uri=${vk_utils.getVKURIForPost(post)}" class="group-avatar" th:src="${group.photoURI}"/>
+			    			<span onclick="goToPost(event)" th:attr="vk-uri=${vk_utils.getVKURIForPost(post)}" class="group-name" th:text="${group.name}"></span>
+			    			<span onclick="goToPost(event)" th:attr="vk-uri=${vk_utils.getVKURIForPost(post)}" class="post-datetime" th:text="${utils.formatDate(post.date)}"></span>
+			    		</header>
+			    		<div class="post-text">
+		    				<div th:remove="tag" th:utext="${post.text}"></div>
+		    			</div>
+		    		</div>
+		    	</td>
+		    </tr>
+		</th:block>
+	</table>
+	<script>
+		document.getElementById('header-logo').classList.add('selected-section');
+		document.getElementById('header-logo').classList.add('selected-section-no-border');
+		
+		document.getElementById('header-squad-name').classList.add('selected-section');
+		document.getElementById('header-squad-name').classList.add('selected-section-left-corner');
+		
+		function goToPost(e) {
+			const vkURI = e.target.getAttribute('vk-uri');
+			
+			if (vkURI !== null)
+				window.open(vkURI, '_blank').focus();
+		}
+	</script>
+</body>
+</html>

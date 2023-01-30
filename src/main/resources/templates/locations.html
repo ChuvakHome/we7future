@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+	    <meta charset="UTF-8">
+	    <title>Локации | СПО Будущее</title>
+	    <link rel="stylesheet" href="/events/css/style.css"></link>
+	    <link rel="icon" href="/base/logo.png"/>
+	</head>
+	<body>
+		<div th:insert="~{header.html}"></div>
+		<form>
+		    <label for="event-name">Название мероприятия:</label>
+		    <br/>
+		    <input placeholder="Название мероприятия" id="event-name" type="text"/>
+		    <br/>
+		    <label for="event-type">Тип мероприятия:</label>
+		    <br/>
+		    <select id="event-type">
+		        <option>Комиссарка</option>
+		        <option>ШВМ</option>
+		        <option>Собрание</option>
+		        <option>Агитационное мероприятие</option>
+		        <option>Волонтерство</option>
+		    </select>
+		    <br/>
+		    <label for="event-date">Дата и время:</label>
+		    <br/>
+		    <input id="event-date" type="datetime-local"/>
+		    <br/>
+		    <label for="event-description">Описание мероприятия:</label>
+		    <br/>
+		    <input id="event-description" placeholder="Описание мероприятия" type="text"/>
+		    <br/>
+		    <button>Создать мероприятие</button>
+		
+		</form>
+		<h1>Список мероприятий:</h1>
+	</body>
+</html>

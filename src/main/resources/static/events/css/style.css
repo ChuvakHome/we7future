@@ -1,0 +1,23 @@
+html {
+    font-family: Fira, sans-serif;
+}
+
+header {
+    background-color: #17b5ff
+}
+
+table {
+    table-layout: fixed;
+}
+
+.header-button {
+    background-color: #17b5ff;
+    border: none;
+    font-size: medium;
+}
+
+table#event-list td {
+    border: 0.5px solid black;
+    text-align: center;
+	font-family: serif;
+}

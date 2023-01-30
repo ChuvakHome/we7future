@@ -1,0 +1,51 @@
+
+ul.legend-list li::before {
+	font-size: 1.5em;
+	content: '\25cf\20';
+}
+
+ul.legend-list li {
+	display: inline;
+	margin-right: 10px;
+	cursor: pointer;
+}
+
+.legend {
+	text-align: center;
+}
+
+ul.legend-list li.legend-event-spbso::before {
+	color: #0033B7;
+}
+
+ul.legend-list li.legend-event-shso::before {
+	color: #00B3FF;
+}
+
+ul.legend-list li.legend-event-comissarka::before {
+	color: red;
+}
+
+ul.legend-list li.legend-event-meeting::before {
+	color: #FEEF30;
+}
+
+ul.legend-list li.legend-event-school::before {
+	color: #17A64A;
+}
+
+ul.legend-list li.legend-event-preparation::before {
+	color: #B0B0B0;
+}
+
+ul.legend-list li.legend-event-intersquad::before {
+	color: #FF9C7D;
+}
+
+ul.legend-list li.legend-event-agitation::before {
+	color: #8A00CB;
+}
+	
+ul.legend-list li.legend-event-volunteering::before {
+	color: #FE9DE9;
+}

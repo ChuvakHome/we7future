@@ -1,0 +1,93 @@
+
+table#calendar-table {
+	border-spacing: 0;
+}
+
+table#calendar-table td.calendar-cell {
+	border: 1.5px solid #1DA1D9;
+	width: calc(100% / (7 * 7));
+}
+
+table#calendar-table > tbody td.calendar-cell {
+	text-align: right;
+}
+
+table#calendar-table thead tr td {
+	text-align: center;
+}
+
+table#calendar-table thead tr :first-child {
+	border-top-left-radius: 10px;
+}
+
+table#calendar-table thead tr :last-child {
+	border-top-right-radius: 10px;
+}
+
+table#calendar-table > tbody tr.calendar-row:last-child td.calendar-cell:first-child {
+	border-bottom-left-radius: 10px;
+}
+
+table#calendar-table > tbody tr.calendar-row:last-child td.calendar-cell:last-child {
+	border-bottom-right-radius: 10px;
+}
+
+div {
+	text-align: center;
+}
+
+button#prev-month, button#next-month {
+	font-size: 17pt;
+	background: rgba(255, 255, 255, 0);
+	cursor: pointer;
+}
+
+tbody td.calendar-cell {
+	height: 7vw;
+}
+
+div.calendar-cell-date-parent {
+	height: 100%;
+}
+
+div.calendar-cell-date-div {
+	float: right;
+	text-align: center;
+	border: 2.5px solid #1DA1D9;
+	border-left-color: #1DA1D9;
+	border-bottom-color: #1DA1D9;
+	border-bottom-left-radius: 10px;
+	width: 40px;
+	margin-top: -3.5px;
+	margin-right: -3.5px;
+	padding: 5px;
+}
+
+div.left-event-div {
+	float: left;
+}
+
+div#date-pick-div button#create-button {
+	float: right;
+	border: 2px solid #1DA1D9;
+	border-radius: 15px;
+	background: rgba(255, 255, 255, 0);
+	padding: 5px;
+	cursor: pointer;
+	font-size: 1.1em;
+}
+
+button#create-button span {
+	color: #1DA1D9;
+}
+
+button#create-button span::before {
+	content: '+';
+	color: white;
+	border: 2px solid #1DA1D9;
+	border-radius: 50%;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: #1DA1D9;
+	margin-right: 10px;
+}

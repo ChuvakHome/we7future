@@ -1,0 +1,15 @@
+package ru.itmo.squadapp.model;
+
+public enum UserRole {
+	CANDIDATE,
+	BUDUSCHANIN,
+	FIGHTER,
+	COMMANDER,
+	EXTERNAL_COMMISSAR,
+	INTERIOR_COMMISSAR,
+	METHODIST,
+	COMMANDANT,
+	SMM_HEAD,
+	FLAG_BEARER,
+	SMM
+}

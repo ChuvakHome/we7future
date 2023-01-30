@@ -1,0 +1,12 @@
+
+table#user-list {
+	border-collapse: collapse;
+}
+
+table#user-list tr {
+	border: 1px solid black;
+}
+
+table#user-list td {
+	text-align: center;
+}
